@@ -20,6 +20,6 @@ pf run show-metrics -n perform_math_eval3
 #Run batch
 pf run visualize -n math-copilot-2
 
-
+https://www.youtube.com/watch?v=-maOEleJ1PE&t=344s
 
 
