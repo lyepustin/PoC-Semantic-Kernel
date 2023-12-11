@@ -1,0 +1,18 @@
+{
+  "nodes": {
+    "math_planner": {
+      "variant_0": {
+        "inputs": {
+          "question": []
+        }
+      }
+    },
+    "chat": {
+      "variant_0": {
+        "inputs": {
+          "system_answer": []
+        }
+      }
+    }
+  }
+}

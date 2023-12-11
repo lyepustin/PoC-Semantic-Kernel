@@ -1,0 +1,375 @@
+{
+  "flow_runs": [
+    {
+      "run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687_0",
+      "status": "Completed",
+      "error": null,
+      "inputs": {
+        "chat_history": [
+          {
+            "inputs": {
+              "question": "2+2"
+            },
+            "outputs": {
+              "answer": "2 + 2 equals 4."
+            }
+          },
+          {
+            "inputs": {
+              "question": "3*3"
+            },
+            "outputs": {
+              "answer": "3 multiplied by 3 equals 9."
+            }
+          }
+        ],
+        "question": "1231312312*12312312312312"
+      },
+      "output": {
+        "answer": "The result of multiplying 1,231,312,312 by 12,312,312,312 is 15,143,201,269,197,441,344."
+      },
+      "metrics": null,
+      "request": null,
+      "parent_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+      "root_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+      "source_run_id": null,
+      "flow_id": "template_chat_flow",
+      "start_time": "2023-12-09T23:21:19.217375Z",
+      "end_time": "2023-12-09T23:21:21.334895Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "chat",
+          "type": "Tool",
+          "inputs": {
+            "connection": "AzureOpenAI",
+            "deployment_name": "gpt-35-turbo",
+            "question": "1231312312*12312312312312"
+          },
+          "output": "The bot should respond with this answer to the user's question: ",
+          "start_time": 1702160479.218388,
+          "end_time": 1702160480.792537,
+          "error": null,
+          "children": null,
+          "node_name": "math_planner"
+        },
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Tool",
+          "inputs": {
+            "prompt": "system:\nYou are a helpful assistant.\n\n{% for item in chat_history %}\nuser:\n{{item.inputs.question}}\nassistant:\n{{item.outputs.answer}}\n{% endfor %}\n\nuser:\n{{question}}\n\nsystem:\n{{system_answer}}",
+            "chat_history": [
+              {
+                "inputs": {
+                  "question": "2+2"
+                },
+                "outputs": {
+                  "answer": "2 + 2 equals 4."
+                }
+              },
+              {
+                "inputs": {
+                  "question": "3*3"
+                },
+                "outputs": {
+                  "answer": "3 multiplied by 3 equals 9."
+                }
+              }
+            ],
+            "deployment_name": "gpt-35-turbo",
+            "max_tokens": 256,
+            "question": "1231312312*12312312312312",
+            "system_answer": "The bot should respond with this answer to the user's question: ",
+            "temperature": 0.7,
+            "stream": true
+          },
+          "output": [],
+          "start_time": 1702160480.793535,
+          "end_time": 1702160481.333393,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "self": "<openai.resources.chat.completions.Completions object at 0x000001903CC5B3D0>",
+                "model": "gpt-35-turbo",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are a helpful assistant."
+                  },
+                  {
+                    "role": "user",
+                    "content": "2+2"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "2 + 2 equals 4."
+                  },
+                  {
+                    "role": "user",
+                    "content": "3*3"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "3 multiplied by 3 equals 9."
+                  },
+                  {
+                    "role": "user",
+                    "content": "1231312312*12312312312312"
+                  },
+                  {
+                    "role": "system",
+                    "content": "The bot should respond with this answer to the user's question:"
+                  }
+                ],
+                "temperature": 0.7,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": true,
+                "stop": null,
+                "max_tokens": 256,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "logit_bias": {},
+                "user": "",
+                "extra_headers": {
+                  "x-ms-useragent": "promptflow-cli/1.1.1 prompt-flow-extension/1.6.0 (win32; x64) VSCode/1.84.2 promptflow-sdk/1.1.1 promptflow/1.1.1",
+                  "ms-azure-ai-promptflow-user-agent": "promptflow-cli/1.1.1 prompt-flow-extension/1.6.0 (win32; x64) VSCode/1.84.2 promptflow-sdk/1.1.1",
+                  "ms-azure-ai-promptflow-run-mode": "Test",
+                  "ms-azure-ai-promptflow-flow-id": "template_chat_flow",
+                  "ms-azure-ai-promptflow-root-run-id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+                  "ms-azure-ai-promptflow-called-from": "aoai-tool"
+                }
+              },
+              "output": [],
+              "start_time": 1702160480.79553,
+              "end_time": 1702160481.333393,
+              "error": null,
+              "children": null,
+              "node_name": null
+            }
+          ],
+          "node_name": "chat"
+        }
+      ],
+      "variant_id": "",
+      "name": "",
+      "description": "",
+      "tags": null,
+      "system_metrics": {
+        "duration": 2.11752,
+        "prompt_tokens": 83,
+        "completion_tokens": 0,
+        "total_tokens": 83
+      },
+      "result": {
+        "answer": "The result of multiplying 1,231,312,312 by 12,312,312,312 is 15,143,201,269,197,441,344."
+      },
+      "upload_metrics": false
+    }
+  ],
+  "node_runs": [
+    {
+      "node": "math_planner",
+      "flow_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+      "run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687_math_planner_0",
+      "status": "Completed",
+      "inputs": {
+        "connection": "AzureOpenAI",
+        "deployment_name": "gpt-35-turbo",
+        "question": "1231312312*12312312312312"
+      },
+      "output": "The bot should respond with this answer to the user's question: ",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687_0",
+      "start_time": "2023-12-09T23:21:19.218388Z",
+      "end_time": "2023-12-09T23:21:20.792537Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "chat",
+          "type": "Tool",
+          "inputs": {
+            "connection": "AzureOpenAI",
+            "deployment_name": "gpt-35-turbo",
+            "question": "1231312312*12312312312312"
+          },
+          "output": "The bot should respond with this answer to the user's question: ",
+          "start_time": 1702160479.218388,
+          "end_time": 1702160480.792537,
+          "error": null,
+          "children": null,
+          "node_name": "math_planner"
+        }
+      ],
+      "variant_id": "",
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "[2023-12-09T23:21:20+0000] Function:_GLOBAL_FUNCTIONS_.Multiply\n[2023-12-09T23:21:20+0000] Input varsı {'input': '1231312312', 'input2': '12312312312312'}\n[2023-12-09T23:21:20+0000] Output vars: ['RESULT__FINAL_ANSWER']\n[2023-12-09T23:21:20+0000] Result: \n",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 1.574149
+      },
+      "result": "The bot should respond with this answer to the user's question: "
+    },
+    {
+      "node": "chat",
+      "flow_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+      "run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687_chat_0",
+      "status": "Completed",
+      "inputs": {
+        "chat_history": [
+          {
+            "inputs": {
+              "question": "2+2"
+            },
+            "outputs": {
+              "answer": "2 + 2 equals 4."
+            }
+          },
+          {
+            "inputs": {
+              "question": "3*3"
+            },
+            "outputs": {
+              "answer": "3 multiplied by 3 equals 9."
+            }
+          }
+        ],
+        "deployment_name": "gpt-35-turbo",
+        "max_tokens": 256,
+        "question": "1231312312*12312312312312",
+        "system_answer": "The bot should respond with this answer to the user's question: ",
+        "temperature": 0.7
+      },
+      "output": "<generator object generate_from_proxy at 0x000001903CC07940>",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687_0",
+      "start_time": "2023-12-09T23:21:20.793535Z",
+      "end_time": "2023-12-09T23:21:21.333896Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Tool",
+          "inputs": {
+            "prompt": "system:\nYou are a helpful assistant.\n\n{% for item in chat_history %}\nuser:\n{{item.inputs.question}}\nassistant:\n{{item.outputs.answer}}\n{% endfor %}\n\nuser:\n{{question}}\n\nsystem:\n{{system_answer}}",
+            "chat_history": [
+              {
+                "inputs": {
+                  "question": "2+2"
+                },
+                "outputs": {
+                  "answer": "2 + 2 equals 4."
+                }
+              },
+              {
+                "inputs": {
+                  "question": "3*3"
+                },
+                "outputs": {
+                  "answer": "3 multiplied by 3 equals 9."
+                }
+              }
+            ],
+            "deployment_name": "gpt-35-turbo",
+            "max_tokens": 256,
+            "question": "1231312312*12312312312312",
+            "system_answer": "The bot should respond with this answer to the user's question: ",
+            "temperature": 0.7,
+            "stream": true
+          },
+          "output": [],
+          "start_time": 1702160480.793535,
+          "end_time": 1702160481.333393,
+          "error": null,
+          "children": [
+            {
+              "name": "openai.resources.chat.completions.Completions.create",
+              "type": "LLM",
+              "inputs": {
+                "self": "<openai.resources.chat.completions.Completions object at 0x000001903CC5B3D0>",
+                "model": "gpt-35-turbo",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are a helpful assistant."
+                  },
+                  {
+                    "role": "user",
+                    "content": "2+2"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "2 + 2 equals 4."
+                  },
+                  {
+                    "role": "user",
+                    "content": "3*3"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "3 multiplied by 3 equals 9."
+                  },
+                  {
+                    "role": "user",
+                    "content": "1231312312*12312312312312"
+                  },
+                  {
+                    "role": "system",
+                    "content": "The bot should respond with this answer to the user's question:"
+                  }
+                ],
+                "temperature": 0.7,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": true,
+                "stop": null,
+                "max_tokens": 256,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "logit_bias": {},
+                "user": "",
+                "extra_headers": {
+                  "x-ms-useragent": "promptflow-cli/1.1.1 prompt-flow-extension/1.6.0 (win32; x64) VSCode/1.84.2 promptflow-sdk/1.1.1 promptflow/1.1.1",
+                  "ms-azure-ai-promptflow-user-agent": "promptflow-cli/1.1.1 prompt-flow-extension/1.6.0 (win32; x64) VSCode/1.84.2 promptflow-sdk/1.1.1",
+                  "ms-azure-ai-promptflow-run-mode": "Test",
+                  "ms-azure-ai-promptflow-flow-id": "template_chat_flow",
+                  "ms-azure-ai-promptflow-root-run-id": "bd98aa5e-aaf3-46ec-9405-ec25c0da7687",
+                  "ms-azure-ai-promptflow-called-from": "aoai-tool"
+                }
+              },
+              "output": [],
+              "start_time": 1702160480.79553,
+              "end_time": 1702160481.333393,
+              "error": null,
+              "children": null,
+              "node_name": null
+            }
+          ],
+          "node_name": "chat"
+        }
+      ],
+      "variant_id": "",
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "prompt_tokens": 83,
+        "completion_tokens": 0,
+        "total_tokens": 83,
+        "duration": 0.540361
+      },
+      "result": "<generator object generate_from_proxy at 0x000001903CC07940>"
+    }
+  ]
+}

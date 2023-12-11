@@ -1,0 +1,48 @@
+{
+  "package": {},
+  "code": {
+    "chat.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "system_answer": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat.jinja2"
+    },
+    "math_planner.py": {
+      "type": "python",
+      "inputs": {
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "deployment_name": {
+          "type": [
+            "string"
+          ]
+        },
+        "connection": {
+          "type": [
+            "AzureOpenAIConnection"
+          ]
+        }
+      },
+      "source": "math_planner.py",
+      "function": "chat"
+    }
+  }
+}
