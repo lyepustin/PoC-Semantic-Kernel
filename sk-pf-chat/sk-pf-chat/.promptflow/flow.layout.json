@@ -1,0 +1,25 @@
+{
+  "nodeLayouts": {
+    "inputs": {
+      "x": 12,
+      "y": 62,
+      "index": -1
+    },
+    "outputs": {
+      "x": 137,
+      "y": 497,
+      "index": -1
+    },
+    "chat": {
+      "x": 66,
+      "y": 318,
+      "index": 0
+    },
+    "math_planner": {
+      "x": 267,
+      "y": 208,
+      "index": 1
+    }
+  },
+  "orientation": "Vertical"
+}

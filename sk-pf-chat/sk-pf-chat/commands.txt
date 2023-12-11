@@ -1,0 +1,25 @@
+#Deploy flow
+pf flow serve --source .   
+
+#Create flow data
+pf run create --flow . --data data.jsonl --stream --name math-copilot-3
+
+#View results.
+pf run show-details -n math-copilot-6
+
+#Evaluate batch
+pf run create --flow ../../sk-pf --data data.jsonl --column-mapping groundtruth='${data.groundtruth}' prediction='${run.outputs.answer}' --run math-copilot-6 --stream --name perform_math_eval3
+
+#Get metrics
+pf run show-metrics -n perform_math_eval3
+----------------
+
+
+
+
+#Run batch
+pf run visualize -n math-copilot-2
+
+https://www.youtube.com/watch?v=-maOEleJ1PE&t=344s
+
+
